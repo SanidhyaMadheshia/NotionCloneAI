@@ -5,6 +5,7 @@ import { Button } from './ui/button'
 import { doc, updateDoc } from 'firebase/firestore'
 import { db } from '@/firebase'
 import { useDocumentData } from 'react-firebase-hooks/firestore'
+import Editor from './Editor'
 
 const Document = ({id} : {id : string }) => {
 
@@ -35,7 +36,7 @@ const Document = ({id} : {id : string }) => {
         }
     }
   return (
-    <div>
+    <div className='h-screen w-full'>
 
         <div className='flex max-w-6xl mx-auto justify-between pb-5'>
             <form action="" onSubmit={updateTitle} className='flex flex-1 space-x-2'>
@@ -55,10 +56,10 @@ const Document = ({id} : {id : string }) => {
 
             </form>
         </div>
-        <div>
+        <div >
             {/* managers user  */}
 
-
+        <Editor/>
             {/* Avatars */}
         </div>
         {/* collaborative editor */}

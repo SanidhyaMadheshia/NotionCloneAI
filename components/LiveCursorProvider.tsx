@@ -25,19 +25,34 @@ const LiveCursorProvider = ({children} :{
         onPointerMove={handlePointerMove}
         onPointerLeave={handlePointerLeave}
     >
-        {others.filter((other)=>{
-            other.presence.cursor !== null;
+        {children}
+        {others.filter((other) => other.presence?.cursor
 
-        }).map(({connectionId,presence,info})=>{
+
+// (other)=>{
+//     other.presence.cursor !== null;
+
+        ).map(({connectionId,presence,info})=>{
+            console.log(presence);
             return (
-                <FollowPointer key={connectionId} info={info} 
+                <FollowPointer key={connectionId} info={info || {}} 
                     x={presence.cursor!.x}
                     y={presence.cursor!.y}
                 />
             )
         })
         }
-        {children}
+        {/* {myPresence? 
+            <FollowPointer key={`123456789`} info={{
+                name : `sandy`,
+                email : `werfwer`,
+                avatar : `https://picsum.photos/200/300`
+            }}
+            x={myPresence?.cursor!.x || 0}
+            y={myPresence?.cursor!.y || 0}
+            />
+            : null
+        } */}
 
     </div>
   )
